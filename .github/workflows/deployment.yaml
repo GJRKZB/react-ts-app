@@ -6,6 +6,7 @@ env:
 
 on:   
   pull_request:
+    types: [opened, synchronize, reopened]
     branches: [main]
   push: 
     branches: [develop]
@@ -85,7 +86,7 @@ jobs:
           echo "You can view it here: ${{ steps.deploy.outputs.url }}"
 
   production:
-    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
     needs: build
     runs-on: ubuntu-latest
     steps:
