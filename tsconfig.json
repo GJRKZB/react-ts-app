@@ -3,7 +3,8 @@
     "target": "ES5",
     "module": "ESNext",
     "moduleResolution": "node",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "allowJs": true,
     "jsx": "react-jsx",
     "noEmit": true,
     "isolatedModules": true,
@@ -11,8 +12,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "type.d.ts", "setupTests.ts"],
   "exclude": ["node_modules", "build"]
 }
