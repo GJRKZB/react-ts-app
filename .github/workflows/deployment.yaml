@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [main]
   push: 
-    branches: [develop]
+    branches: [main]
 
 jobs: 
   test: 
