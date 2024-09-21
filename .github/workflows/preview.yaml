@@ -13,13 +13,16 @@ jobs:
       - run: echo "This is a test for preview deployment"
       
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: "yarn"
 
-      - run: npm ci
-      - run: npm run lint      
+      - run: yarn ci
+      - run: yarn lint      
       
   Deploy-Preview:
     needs: [Test]
