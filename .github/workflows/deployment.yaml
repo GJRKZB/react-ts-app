@@ -60,7 +60,6 @@ jobs:
         run: yarn build
     
   preview:
-    if: github.event_name == 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -85,7 +84,6 @@ jobs:
           echo "You can view it here: ${{ steps.deploy.outputs.url }}"
 
   production:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main', 
     needs: build
     runs-on: ubuntu-latest
     steps:
