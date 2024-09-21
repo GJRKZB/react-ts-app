@@ -4,11 +4,11 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-on:
+on:   
   pull_request:
     branches: [main]
   push: 
-    branches: [main]
+    branches: [develop]
 
 jobs: 
   test: 
@@ -60,7 +60,7 @@ jobs:
         run: yarn build
     
   preview:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -85,7 +85,7 @@ jobs:
           echo "You can view it here: ${{ steps.deploy.outputs.url }}"
 
   production:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     steps:
