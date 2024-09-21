@@ -1,4 +1,3 @@
 export const App = () => {
-  const name = "Vishwas";
-  return <h1>Hello World</h1>;
+  return <h1>This is a test for preview</h1>;
 };
